@@ -3,19 +3,19 @@ FROM node:current-alpine
 
 LABEL org.opencontainers.image.title="Hello Docker Learners!" \
       org.opencontainers.image.description="Web server showing host that responded" \
-      org.opencontainers.image.authors="@nigelpoulton"
+      org.opencontainers.image.authors="@erictalla"
 
-# Create directory in container image for app code
-RUN mkdir -p /usr/src/app
+# creating my working directory
+WORKDIR /usr/bin/app
 
-# Copy app code (.) to /usr/src/app in container image
-COPY . /usr/src/app
+#copy curent directory to working directory
 
-# Set working directory context
-WORKDIR /usr/src/app
+COPY . /usr/bin/app
 
-# Install dependencies from package.json
+# install dependencies from package.json
+
 RUN npm install
 
-# Command for container to execute
-ENTRYPOINT [ "node", "app.js" ]
+#Command for container to execute
+
+ENTRYPOINT [ "node","app.js" ]
